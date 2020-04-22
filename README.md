@@ -11,14 +11,14 @@ kubectl create namespace jitsi
 ### Create Secrets , You should replace `...` with secret passphare
 
 ```bash
-kubectl create secret generic jitsi-config -n jitsi --from-literal=JICOFO_COMPONENT_SECRET=... --from-literal=JICOFO_AUTH_PASSWORD=... --from-literal=JVB_AUTH_PASSWORD=...
+kubectl create secret generic jitsi-config -n jitsi --from-literal=JICOFO_COMPONENT_SECRET=... --from-literal=JICOFO_AUTH_PASSWORD=... --from-literal=JVB_AUTH_PASSWORD=... --from-literal=JIGASI_XMPP_PASSWORD=... --from-literal=JIBRI_RECORDER_PASSWORD=... --from-literal=JIBRI_XMPP_PASSWORD=...
 ```
 
-#### create ssl certificate using Lets Encrypt 
+#### Create ssl certificate using Lets Encrypt 
 ```bash
 certbot -d linuxawy.co --manual --preferred-challenges dns certonly
 ```
-#### adding certificate to k8s secrets 
+#### Adding certificate to k8s secrets 
 ```bash
 kubectl create secret tls tls-secret --key privkey.pem --cert cert.pem -n jitsi
 ```
